@@ -1,9 +1,11 @@
 import { useRef, useState } from "react";
 import Style from "./Homepage.module.css"
-import girl from "../../assets/girl.svg"
+
+import SuggestionBox from "../../component/Suggestionbox/Suggestionbox";
 function Homepage() {
-    const [inputValue, setInputValue] = useState('')
-    const [isSuggestion, setIsSuggestion] = useState(false)
+
+    const [inputValue, setInputValue] = useState('') // Input Value Store Here
+    const [isSuggestion, setIsSuggestion] = useState(false) // Suggestion Box Check
     const closeSuggestionBox = useRef()
 
     const CloseSuggestionBox = (e) => {
@@ -13,8 +15,6 @@ function Homepage() {
     return (
         <div className={Style.homepage}>
 
-            <img src="" alt="" />
-
             <div className={Style.searchContainer}
                 ref={closeSuggestionBox} onClick={CloseSuggestionBox}>
 
@@ -23,45 +23,8 @@ function Homepage() {
                     onClick={() => setIsSuggestion(true)}
                 />
 
-                {/* Suggestion Box */}
-                {isSuggestion &&
-                    <div className={Style.suggestionContainer} >
+                {isSuggestion && <SuggestionBox />}
 
-                        <div className={Style.suggInnerInnerContainer}>
-                            <h5><b>Latest Trends</b> </h5>
-
-                            <div className={Style.trendingProductShow}>
-
-                                {/* 1st  */}
-                                <div className={Style.trendingSingleProduct}>
-                                    <img src={girl} alt="" />
-
-                                    <p>Shirt with puffed sleeves</p>
-                                </div>
-
-                                {/* 2nd */}
-                                <div className={Style.trendingSingleProduct}>
-                                    <img src={girl} alt="" />
-
-                                    <p>Shirt with puffed sleeves</p>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div className={Style.suggInnerInnerContainer}>
-                            <h5><b>Popular Suggestions</b> </h5>
-
-                            <ul>
-                                <li>Striped shirt dress</li>
-                                <li>Satin shirts</li>
-                                <li>Striped shirt dress</li>
-                                <li>Striped shirt dress</li>
-                            </ul>
-                        </div>
-
-                    </div>
-                }
             </div>
 
         </div>
